@@ -1,6 +1,7 @@
 package com.ipiecoles.java.java350.model;
 
 
+import com.ipiecoles.java.java350.Employe;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -105,6 +106,10 @@ public class EmployeTest {
             "'T002',0,1,0.5d,500",  // tst a temps partiel
             "'T003',0,2,1,2300",    // test avec une perf a 2
             "'T004',2,1,1,1200",    // test avec 2 ans d'anciennete
+            "'T005',1,2,1,2400",
+            "'M005',0,1,1,1700",
+            "'M006',3,1,1,2000",
+
     })
     void TestGetPrimeAnnuel(String matricule,Long nbAnneesAnciennete,Integer performance,Double tauxActivite,Double primeAttendue ){
         // GIVEN
