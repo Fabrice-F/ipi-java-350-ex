@@ -82,5 +82,46 @@ public class EmployeTest {
     // écrire un premier test unitaire classique testant un de vos scénarios.
     // dupliquer et transformer ce test en test paramétré pour ajouter facilement les autres scénarios.
     // résultat avec isequalTo.
-    
+
+
+
+    @Test
+    void testIfMatriculeEmployeIsEmpty(){
+        // GIVEN
+        Employe employee = new Employe("JOB","Steve","",
+                LocalDate.now().minusYears(7),1200.0d,1,1.0d);
+
+        //WHEN
+        Double prime = employee.getPrimeAnnuelle();
+
+        //THEN
+        Assertions.assertThat(prime).isEqualTo(1700d);
+    }
+
+    @ParameterizedTest(name = "matricule: {0},  anciennete: {1}, performance: {2}, temps partiel: {3} => prime: {4}€")
+    @CsvSource({
+
+            "'T001',0,1,1,1000", // test de base
+            "'T002',0,1,0.5d,500",  // tst a temps partiel
+            "'T003',0,2,1,2300",    // test avec une perf a 2
+            "'T004',2,1,1,1200",    // test avec 2 ans d'anciennete
+
+            "'T005',5,2,0.5,1400",
+            "'T13',9,1,0.5,950",
+            "'E001',3,7,0.8,6080",
+    })
+    void TestGetPrimeAnnuel(String matricule,Long nbAnneesAnciennete,Integer performance,Double tauxActivite,Double primeAttendue ){
+        // GIVEN
+
+        Employe employee = new Employe("JOB","Steve",matricule,
+                LocalDate.now().minusYears(nbAnneesAnciennete),1400d,performance,tauxActivite);
+
+        //WHEN
+        Double prime = employee.getPrimeAnnuelle();
+
+        //THEN
+
+        Assertions.assertThat(prime).isEqualTo(primeAttendue);
+    }
+
 }
