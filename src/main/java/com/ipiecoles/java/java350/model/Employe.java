@@ -91,9 +91,6 @@ case SATURDAY:var = var + 1;
      */
     //Matricule, performance, date d'embauche, temps partiel, prime
     public Double getPrimeAnnuelle(){
-        if(this.matricule.isBlank()){
-            this.matricule ="T-00001";
-        }
 
         //Calcule de la prime d'ancienneté
         Double primeAnciennete = Entreprise.PRIME_ANCIENNETE * this.getNombreAnneeAnciennete();

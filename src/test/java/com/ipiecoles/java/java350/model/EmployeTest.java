@@ -27,9 +27,9 @@ public class EmployeTest {
     @Test
     void testIfNombreAnneeAncienneteIsNotNull() {
     // Given: Initialisation des données d'entrée.
-        Employe employee = new Employe("Gates","Bill","B00001",
-                null,1200.0d,1,1.0d);
-
+        Employe employee = new Employe();
+        employee.setDateEmbauche(null);
+        
     // When : Exécution de la méthode à tester.
         Integer AnneeAnciennete =  employee.getNombreAnneeAnciennete();
 
@@ -105,10 +105,6 @@ public class EmployeTest {
             "'T002',0,1,0.5d,500",  // tst a temps partiel
             "'T003',0,2,1,2300",    // test avec une perf a 2
             "'T004',2,1,1,1200",    // test avec 2 ans d'anciennete
-
-            "'T005',5,2,0.5,1400",
-            "'T13',9,1,0.5,950",
-            "'E001',3,7,0.8,6080",
     })
     void TestGetPrimeAnnuel(String matricule,Long nbAnneesAnciennete,Integer performance,Double tauxActivite,Double primeAttendue ){
         // GIVEN
@@ -122,6 +118,21 @@ public class EmployeTest {
         //THEN
 
         Assertions.assertThat(prime).isEqualTo(primeAttendue);
+    }
+
+    @Test
+    void TestGetPrimeAnnuelMatriculeNull(){
+        // GIVEN
+
+        Employe employee = new Employe("JOB","Steve",null,
+                LocalDate.now(),1400d,1,1.0d);
+
+        //WHEN
+        Double prime = employee.getPrimeAnnuelle();
+
+        //THEN
+
+        Assertions.assertThat(prime).isEqualTo(1000.0);
     }
 
 }
