@@ -1,0 +1,6 @@
+2021-02-10 11:56:42 - INFO  - Starting EmployeServiceIntegrationTest on DESKTOP-P0UDKGU with PID 20764 (started by fabrice ferrere in H:\ALL GIT\Java git prof\ipi-java-350-ex)
+2021-02-10 11:56:42 - INFO  - No active profile set, falling back to default profiles: default
+2021-02-10 11:56:44 - INFO  - Started EmployeServiceIntegrationTest in 1.899 seconds (JVM running for 2.676)
+2021-02-10 11:56:44 - INFO  - Embauche d'un employé avec les infos suivantes : nom:Doe ,prenom: John , poste: TECHNICIEN , niveau d'étude: BTS_IUT , taux d'activité 1.0 
+2021-02-10 11:56:44 - WARN  - matricule par defaut affecté
+2021-02-10 11:56:44 - INFO  - employe enregistrer: Employe{id=1, nom='Doe', prenom='John', matricule='T00001', dateEmbauche=2021-02-10, salaire=1825.46, performance=1, tempsPartiel=1.0}
