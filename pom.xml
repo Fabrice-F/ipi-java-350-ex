@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.ipiecoles.java</groupId>
 	<artifactId>java350</artifactId>
-	<version>0.0.3</version>
+	<version>1.0.0</version>
 	<name>java350</name>
 	<description>TP qualité logicielle IPI</description>
 
