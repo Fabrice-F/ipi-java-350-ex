@@ -9,10 +9,7 @@ import com.ipiecoles.java.java350.repository.EmployeRepository;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.ArgumentCaptor;
-import org.mockito.InjectMocks;
-import org.mockito.Mock;
-import org.mockito.Mockito;
+import org.mockito.*;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import javax.persistence.EntityExistsException;
@@ -40,9 +37,12 @@ public class EmployeServiceTest {
         Double tempPartiel = 1.0;
         //Simuler qu'aucun matricule n'est présent
         Mockito.when(employeRepository.findLastMatricule()).thenReturn(null);
-        Mockito.when(employeRepository.findByMatricule("T00001")).thenReturn(null);
 
+
+        Mockito.when(employeRepository.findByMatricule("T00001")).thenReturn(null);
+        Mockito.when(employeRepository.save(Mockito.any(Employe.class))).thenAnswer(AdditionalAnswers.returnsFirstArg());
         //WHEN
+
         employeService.embaucheEmploye(nom,prenom, poste, niveauEtude,tempPartiel);
 
 

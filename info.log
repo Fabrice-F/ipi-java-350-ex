@@ -4,3 +4,22 @@
 2021-02-10 11:56:44 - INFO  - Embauche d'un employé avec les infos suivantes : nom:Doe ,prenom: John , poste: TECHNICIEN , niveau d'étude: BTS_IUT , taux d'activité 1.0 
 2021-02-10 11:56:44 - WARN  - matricule par defaut affecté
 2021-02-10 11:56:44 - INFO  - employe enregistrer: Employe{id=1, nom='Doe', prenom='John', matricule='T00001', dateEmbauche=2021-02-10, salaire=1825.46, performance=1, tempsPartiel=1.0}
+2021-02-10 13:49:02 - INFO  - Embauche d'un employé avec les infos suivantes : nom:Doe ,prenom: John , poste: TECHNICIEN , niveau d'étude: BTS_IUT , taux d'activité 1.0 
+2021-02-10 13:49:02 - WARN  - matricule par defaut affecté
+2021-02-10 13:49:02 - INFO  - employe enregistrer: null
+2021-02-10 13:59:14 - INFO  - Embauche d'un employé avec les infos suivantes : nom:Doe ,prenom: John , poste: TECHNICIEN , niveau d'étude: BTS_IUT , taux d'activité 1.0 
+2021-02-10 13:59:14 - WARN  - matricule par defaut affecté
+2021-02-10 13:59:14 - INFO  - employe enregistrer: null
+2021-02-10 13:59:19 - INFO  - Embauche d'un employé avec les infos suivantes : nom:Doe ,prenom: John , poste: TECHNICIEN , niveau d'étude: BTS_IUT , taux d'activité 1.0 
+2021-02-10 13:59:19 - WARN  - matricule par defaut affecté
+2021-02-10 13:59:34 - INFO  - employe enregistrer: null
+2021-02-10 14:00:08 - INFO  - Embauche d'un employé avec les infos suivantes : nom:Doe ,prenom: John , poste: TECHNICIEN , niveau d'étude: BTS_IUT , taux d'activité 1.0 
+2021-02-10 14:00:08 - WARN  - matricule par defaut affecté
+2021-02-10 14:00:42 - INFO  - employe enregistrer: null
+2021-02-10 14:00:45 - INFO  - Embauche d'un employé avec les infos suivantes : nom:Doe ,prenom: John , poste: TECHNICIEN , niveau d'étude: BTS_IUT , taux d'activité 1.0 
+2021-02-10 14:00:45 - WARN  - matricule par defaut affecté
+2021-02-10 14:02:15 - INFO  - Embauche d'un employé avec les infos suivantes : nom:Doe ,prenom: John , poste: TECHNICIEN , niveau d'étude: BTS_IUT , taux d'activité 1.0 
+2021-02-10 14:02:15 - WARN  - matricule par defaut affecté
+2021-02-10 14:10:51 - INFO  - Embauche d'un employé avec les infos suivantes : nom:Doe ,prenom: John , poste: TECHNICIEN , niveau d'étude: BTS_IUT , taux d'activité 1.0 
+2021-02-10 14:10:51 - WARN  - matricule par defaut affecté
+2021-02-10 14:10:51 - INFO  - employe enregistrer: Employe{, nom='Doe', prenom='John', matricule='T00001', dateEmbauche=2021-02-10, salaire=1825.46, performance=1, tempsPartiel=1.0}
