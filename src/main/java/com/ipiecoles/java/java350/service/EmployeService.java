@@ -71,7 +71,7 @@ public class EmployeService {
 
         employe= employeRepository.save(employe);
 
-        logger.info("employe enregistrer: {}",employe );
+        logger.info("employe enregistrer: {}",employe.toString() );
     }
 
 
