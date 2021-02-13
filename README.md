@@ -96,12 +96,17 @@ Commencer par faire une branche `evaluation` à partir de votre branche `master`
 ## Tests unitaires et TDD
 
 - Tester de manière unitaire le plus exhaustivement possible la méthode `augmenterSalaire` d'`Employe` en essayant de faire du TDD. Décommenter la méthode dans `Employe` et écrire d'abord les tests entièrement (en réflechissant particulièrement aux cas limites) avant d'écrire la méthode. Pensez-vous que vous auriez écrit la méthode directement comme cela si vous n'aviez pas écrit les tests en premier ?
+
+** Il est clair que non, les cas limites comme la salaire à null ainsi que le salaire avec un nombre de chiffre après la virgule supérieur à 2 n'aurait pas été rélfléchis.**
+
+
 - Tester unitairement (en utilisant les tests paramétrés) la méthode `getNbRtt` d'`Employe`. Le nombre de RTT se calcule à partir de la formule suivante : **Nombre de jours dans l'année - Nombre de jours travaillés dans l'année en plein temps - Nombre de samedi et dimanche dans l'année - Nombre de jours fériés ne tombant pas le week-end - Nombre de congés payés**. Le tout au pro-rata du taux d'activité du salarié. **Attention**, des erreurs sont présentes dans cette méthode. Faites donc vos calculs avant et débugguer votre code pour trouver les erreurs. Aidez-vous de Sonar... Rendre cette méthode plus propre, documentée et lisible.
 Infos : 
   - 2019 : l'année est non bissextile, a débuté un mardi et il y a 10 jours fériés ne tombant pas le week-end.
   - 2021 : l'année est non bissextile, a débuté un vendredi et il y a 7 jours fériés ne tombant pas le week-end.
   - 2022 : l'année est non bissextile, a débuté un samedi et il y a 7 jours fériés ne tombant pas le week-end.
   - 2032 : l'année est bissextile, a débuté un jeudi et il y a 7 jours fériés ne tombant pas le week-end.
+
 
 - Tester sans dépendance à la BDD la méthode `calculPerformanceCommercial` d'`EmployeService`
 
