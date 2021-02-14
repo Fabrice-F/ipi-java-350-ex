@@ -2,11 +2,13 @@ package com.ipiecoles.java.java350.model;
 
 
 import com.ipiecoles.java.java350.Employe;
+import com.ipiecoles.java.java350.Entreprise;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
+import java.time.DayOfWeek;
 import java.time.LocalDate;
 
 public class EmployeTest {
@@ -255,7 +257,7 @@ public class EmployeTest {
 
 
     /* =====================================================================================================
-                                    TEST getNbRtt SALAIRE EXERCICE 2
+                                    TEST getNbRtt EXERCICE 2
 
         * Méthode permettant de calculer le nombre de jour dans l'année *
 
@@ -283,6 +285,55 @@ public class EmployeTest {
     }
 
     @Test
+    void TestgetNbRttTempsPlein2021(){
+        //GIVEN
+            Employe e = new Employe();
+            e.setTempsPartiel(1.0);
+        //WHEN
+            Integer nbRtt =  e.getNbRtt(LocalDate.of(2021,1,01));
+        //THEN
+            Assertions.assertThat(nbRtt).isEqualTo(10);
+    }
+
+    @Test
+    void TestgetNbRttTempsPlein2022(){
+        //GIVEN
+            Employe e = new Employe();
+            e.setTempsPartiel(1.0);
+        //WHEN
+            Integer nbRtt =  e.getNbRtt(LocalDate.of(2022,1,01));
+        //THEN
+            Assertions.assertThat(nbRtt).isEqualTo(10);
+    }
+
+    @Test
+    void TestgetNbRttTempsPlein2032(){
+        //GIVEN
+            Employe e = new Employe();
+            e.setTempsPartiel(1.0);
+        //WHEN
+            Integer nbRtt =  e.getNbRtt(LocalDate.of(2032,1,01));
+        //THEN
+            Assertions.assertThat(nbRtt).isEqualTo(11);
+    }
+
+    @Test
+    void TestgetNbRttTempsBisextileStartVendredi(){
+
+        //GIVEN
+            Employe e = new Employe();
+            e.setTempsPartiel(1.0);
+        //WHEN
+            Integer nbRtt =  e.getNbRtt(LocalDate.of(2016,1,01));
+
+        //THEN
+            Assertions.assertThat(nbRtt).isEqualTo(9);
+    }
+
+
+
+
+    @Test
     void TestgetNbRttMiTemps2019(){
         //GIVEN
             Employe e = new Employe();
@@ -292,4 +343,38 @@ public class EmployeTest {
         //THEN
             Assertions.assertThat(nbRtt).isEqualTo(4);
     }
+
+    @Test
+    void TestgetNbRttMiTemps2021(){
+        //GIVEN
+            Employe e = new Employe();
+            e.setTempsPartiel(0.5);
+        //WHEN
+            Integer nbRtt =  e.getNbRtt(LocalDate.of(2021,1,01));
+        //THEN
+            Assertions.assertThat(nbRtt).isEqualTo(5);
+    }
+    @Test
+    void TestgetNbRttMiTemps2022(){
+        //GIVEN
+            Employe e = new Employe();
+            e.setTempsPartiel(0.5);
+        //WHEN
+            Integer nbRtt =  e.getNbRtt(LocalDate.of(2022,1,01));
+        //THEN
+            Assertions.assertThat(nbRtt).isEqualTo(5);
+    }
+    @Test
+    void TestgetNbRttMiTemps2032(){
+
+        //GIVEN
+            Employe e = new Employe();
+            e.setTempsPartiel(0.5);
+        //WHEN
+            Integer nbRtt =  e.getNbRtt(LocalDate.of(2032,1,01));
+        //THEN
+            Assertions.assertThat(nbRtt).isEqualTo(6);
+    }
+
+
 }

@@ -114,11 +114,30 @@ public class EmployeServiceTest {
         catch (Exception  e){
             Assertions.assertThat(e).isInstanceOf(EntityExistsException.class);
             Assertions.assertThat(e.getMessage()).isEqualTo("L'employé de matricule T00001 existe déjà en BDD");
-
         }
 
-
     }
+
+
+        /* =====================================================================================================
+                   TEST sans dépendance calculPerformanceCommercial d'EmployeService EXERCICE 3
+
+        * Méthode calculant la performance d'un commercial en fonction de ses objectifs et du chiffre d'affaire traité dans l'année *
+
+        Formule :
+            Nombre de jours dans l'année - Nombre de jours travaillés dans l'année en plein temps -
+            Nombre de samedi et dimanche dans l'année - Nombre de jours fériés ne tombant pas le week-end -
+            Nombre de congés payés = Nombre de jour RTT
+
+        Cas particulier :
+             * 1 : Si le chiffre d'affaire est inférieur de plus de 20% à l'objectif fixé, le commercial retombe à la performance de base
+             * 2 : Si le chiffre d'affaire est inférieur entre 20% et 5% par rapport à l'ojectif fixé, il perd 2 de performance (dans la limite de la performance de base)
+             * 3 : Si le chiffre d'affaire est entre -5% et +5% de l'objectif fixé, la performance reste la même.
+             * 4 : Si le chiffre d'affaire est supérieur entre 5 et 20%, il gagne 1 de performance
+             * 5 : Si le chiffre d'affaire est supérieur de plus de 20%, il gagne 4 de performance
+             * Si la performance ainsi calculée est supérieure à la moyenne des performances des commerciaux, il reçoit + 1 de performance.
+     =====================================================================================================*/
+
 
 
 }
