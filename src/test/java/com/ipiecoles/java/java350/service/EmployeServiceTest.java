@@ -158,18 +158,5 @@ public class EmployeServiceTest {
      =====================================================================================================*/
 
 
-    @Test
-    public void UnitTestCalculPerformanceCommercialCaZeroObjectifMille() throws EmployeException {
-        // GIVEN
-        employeServiceNoMock.embaucheEmploye("Joel","Bill",Poste.COMMERCIAL,NiveauEtude.LICENCE,1.0);
-
-        //WHEN
-        Employe employe =  employeServiceNoMock.calculPerformanceCommercial("C00001",0l,1000L);
-
-
-        //THEN
-        logger.info(employe.getPerformance().toString());
-    }
-
 
 }
