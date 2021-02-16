@@ -11,13 +11,18 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.*;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.EntityExistsException;
 import java.time.LocalDate;
+import java.util.logging.Logger;
 
 
 @ExtendWith(MockitoExtension.class)
 public class EmployeServiceTest {
+
+    private static org.slf4j.Logger logger = LoggerFactory.getLogger(EmployeServiceTest.class);
 
     @InjectMocks
     EmployeService employeService;
@@ -25,7 +30,8 @@ public class EmployeServiceTest {
     @Mock
     EmployeRepository employeRepository;
 
-
+    @Autowired
+    EmployeService employeServiceNoMock;
 
     @Test
     public void testEmbauchePremierEmploye() throws EmployeException {
@@ -136,8 +142,34 @@ public class EmployeServiceTest {
              * 4 : Si le chiffre d'affaire est supérieur entre 5 et 20%, il gagne 1 de performance
              * 5 : Si le chiffre d'affaire est supérieur de plus de 20%, il gagne 4 de performance
              * Si la performance ainsi calculée est supérieure à la moyenne des performances des commerciaux, il reçoit + 1 de performance.
+
+        Ce que l'on va devoir Mocké :
+        - employeRepository.findByMatricule(matricule);
+        - employeRepository.avgPerformanceWhereMatriculeStartsWith("C");
+        - employeRepository.save(employe);
+
+        ETAPES 1:
+            - Creer un test d'integration sans mocker les repo.
+            - Comprendre comment marche la méthode pour cela :
+                - Création d'un employé de type commercial avec un chiffre d'affaire simple pour une performance de base..
+        ETAPES 2:
+            - Création des mocks pour transformer .
+
      =====================================================================================================*/
 
+
+    @Test
+    public void UnitTestCalculPerformanceCommercialCaZeroObjectifMille() throws EmployeException {
+        // GIVEN
+        employeServiceNoMock.embaucheEmploye("Joel","Bill",Poste.COMMERCIAL,NiveauEtude.LICENCE,1.0);
+
+        //WHEN
+        Employe employe =  employeServiceNoMock.calculPerformanceCommercial("C00001",0l,1000L);
+
+
+        //THEN
+        logger.info(employe.getPerformance().toString());
+    }
 
 
 }

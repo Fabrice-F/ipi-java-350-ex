@@ -272,109 +272,30 @@ public class EmployeTest {
             - Jour ou commence l'année.
      =====================================================================================================*/
 
-    // TODO : A parametrer et a tester les autres parties.
-    @Test
-    void TestgetNbRttTempsPlein2019(){
-        //GIVEN
-            Employe e = new Employe();
-            e.setTempsPartiel(1.0);
-        //WHEN
-            Integer nbRtt =  e.getNbRtt(LocalDate.of(2019,1,01));
-        //THEN
-            Assertions.assertThat(nbRtt).isEqualTo(8);
-    }
+    // TODO : Voir si on passe un temps partiel supérieur à 1.0 pk cela n'es pas gérer ?
+    // Je ne pense pas qe cela être traité dans ces tests ... ou certainement pas assuré une sécurité...
 
-    @Test
-    void TestgetNbRttTempsPlein2021(){
+    @ParameterizedTest(name = "temps activité: {0} annee: {1}, Rtt: {2}")
+    @CsvSource({
+            " 1 , 2032 ,11",
+            " 0.5 , 2032 ,6", // temps plein 11 jours alors mi-temps 6 jours actuellement es ce juste ?
+            " 0.25 , 2032 ,3", // temps plein 11 jours alors tiers temps 3 jours es ce juste ?
+            " 0.5 , 2022 ,5",
+            " 0.5 , 2019 ,4",
+            " 1, 2016 ,9 ", // bisextile et commence un vendredi
+            " 0.25, 2016 , 3", // tiers temps
+            " 1, 2022 , 10",
+            " 1, 2019 , 8",
+    })
+    void testgetNbRttTemps(Double tempsActivite, Integer annee, Integer rttJour){
         //GIVEN
-            Employe e = new Employe();
-            e.setTempsPartiel(1.0);
-        //WHEN
-            Integer nbRtt =  e.getNbRtt(LocalDate.of(2021,1,01));
-        //THEN
-            Assertions.assertThat(nbRtt).isEqualTo(10);
-    }
+        Employe e = new Employe();
+        e.setTempsPartiel(tempsActivite);
 
-    @Test
-    void TestgetNbRttTempsPlein2022(){
-        //GIVEN
-            Employe e = new Employe();
-            e.setTempsPartiel(1.0);
         //WHEN
-            Integer nbRtt =  e.getNbRtt(LocalDate.of(2022,1,01));
-        //THEN
-            Assertions.assertThat(nbRtt).isEqualTo(10);
-    }
-
-    @Test
-    void TestgetNbRttTempsPlein2032(){
-        //GIVEN
-            Employe e = new Employe();
-            e.setTempsPartiel(1.0);
-        //WHEN
-            Integer nbRtt =  e.getNbRtt(LocalDate.of(2032,1,01));
-        //THEN
-            Assertions.assertThat(nbRtt).isEqualTo(11);
-    }
-
-    @Test
-    void TestgetNbRttTempsBisextileStartVendredi(){
-
-        //GIVEN
-            Employe e = new Employe();
-            e.setTempsPartiel(1.0);
-        //WHEN
-            Integer nbRtt =  e.getNbRtt(LocalDate.of(2016,1,01));
+        Integer nbRtt =  e.getNbRtt(LocalDate.of(annee,1,01));
 
         //THEN
-            Assertions.assertThat(nbRtt).isEqualTo(9);
+        Assertions.assertThat(nbRtt).isEqualTo(rttJour);
     }
-
-
-
-
-    @Test
-    void TestgetNbRttMiTemps2019(){
-        //GIVEN
-            Employe e = new Employe();
-            e.setTempsPartiel(0.5);
-        //WHEN
-            Integer nbRtt =  e.getNbRtt(LocalDate.of(2019,1,01));
-        //THEN
-            Assertions.assertThat(nbRtt).isEqualTo(4);
-    }
-
-    @Test
-    void TestgetNbRttMiTemps2021(){
-        //GIVEN
-            Employe e = new Employe();
-            e.setTempsPartiel(0.5);
-        //WHEN
-            Integer nbRtt =  e.getNbRtt(LocalDate.of(2021,1,01));
-        //THEN
-            Assertions.assertThat(nbRtt).isEqualTo(5);
-    }
-    @Test
-    void TestgetNbRttMiTemps2022(){
-        //GIVEN
-            Employe e = new Employe();
-            e.setTempsPartiel(0.5);
-        //WHEN
-            Integer nbRtt =  e.getNbRtt(LocalDate.of(2022,1,01));
-        //THEN
-            Assertions.assertThat(nbRtt).isEqualTo(5);
-    }
-    @Test
-    void TestgetNbRttMiTemps2032(){
-
-        //GIVEN
-            Employe e = new Employe();
-            e.setTempsPartiel(0.5);
-        //WHEN
-            Integer nbRtt =  e.getNbRtt(LocalDate.of(2032,1,01));
-        //THEN
-            Assertions.assertThat(nbRtt).isEqualTo(6);
-    }
-
-
 }
