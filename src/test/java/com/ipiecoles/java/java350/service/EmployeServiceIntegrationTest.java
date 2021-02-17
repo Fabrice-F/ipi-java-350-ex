@@ -72,8 +72,6 @@ public class EmployeServiceIntegrationTest {
                    TEST INTEGRATION calculPerformanceCommercial d'EmployeService EXERCICE 3
              =======================================================================================================*/
 
-    //TODO : retirer le retour de la méthdie calculPerformanceCommercial
-
     /* Objectifs = 1000
     *   CAS 1 : si CA inférieur à 800 alors perf =1
     *   CAS 2 : si CA entre 800 et 950 alors perf -= 2;
@@ -90,7 +88,7 @@ public class EmployeServiceIntegrationTest {
      * @throws EmployeException Si le matricule ,le caTraite ou objectifCa n'as pas une valeur correcte
      */
     @Test
-    public void UnitTestCalculPerformanceCommercialCAS1() throws EmployeException {
+    public void CalculPerformanceCommercialCAS1() throws EmployeException {
         // GIVEN
 
              // Ajout d'un second commercial => matricule C00001 et perf 1 :
@@ -98,8 +96,25 @@ public class EmployeServiceIntegrationTest {
 
         //WHEN
 
-        Employe employe =  employeService.calculPerformanceCommercial("C00001",0l,1000L);
+        employeService.calculPerformanceCommercial("C00001",0l,1000L);
+        Employe employe = employeRepository.findAll().stream().findFirst().get();
 
+                //THEN
+         Assertions.assertThat(employe.getPerformance()).isEqualTo(1);
+    }
+
+    /**
+     *
+     * @throws EmployeException Si le matricule ,le caTraite ou objectifCa n'as pas une valeur correcte
+     */
+    @Test
+    public void CalculPerformanceCommercialCAS2() throws EmployeException {
+        // GIVEN
+        employeService.embaucheEmploye("Joel","Bill",Poste.COMMERCIAL,NiveauEtude.LICENCE,1.0);
+
+        //WHEN
+        employeService.calculPerformanceCommercial("C00001",850l,1000L);
+        Employe employe = employeRepository.findAll().stream().findFirst().get();
 
         //THEN
          Assertions.assertThat(employe.getPerformance()).isEqualTo(1);
@@ -110,14 +125,13 @@ public class EmployeServiceIntegrationTest {
      * @throws EmployeException Si le matricule ,le caTraite ou objectifCa n'as pas une valeur correcte
      */
     @Test
-    public void UnitTestCalculPerformanceCommercialCAS2() throws EmployeException {
+    public void CalculPerformanceCommercialCAS3() throws EmployeException {
         // GIVEN
         employeService.embaucheEmploye("Joel","Bill",Poste.COMMERCIAL,NiveauEtude.LICENCE,1.0);
 
         //WHEN
-        Employe employe =  employeService.calculPerformanceCommercial("C00001",850l,1000L);
-
-
+        employeService.calculPerformanceCommercial("C00001",1050l,1000L);
+        Employe employe = employeRepository.findAll().stream().findFirst().get();
         //THEN
          Assertions.assertThat(employe.getPerformance()).isEqualTo(1);
     }
@@ -131,33 +145,13 @@ public class EmployeServiceIntegrationTest {
     // Au moment où l'on va contrôler si sa nouvelle perf (qui est de 1 + 1 dans ce cas de test car cas 3)
     // est supérieur a la moyenne de des perfs en bdd qui est de 1 .
     // alors on lui ajoute +1
-    public void UnitTestCalculPerformanceCommercialCAS3() throws EmployeException {
+    public void CalculPerformanceCommercialCAS4() throws EmployeException {
         // GIVEN
         employeService.embaucheEmploye("Joel","Bill",Poste.COMMERCIAL,NiveauEtude.LICENCE,1.0);
 
         //WHEN
-        Employe employe =  employeService.calculPerformanceCommercial("C00001",1050l,1000L);
-
-        //THEN
-         Assertions.assertThat(employe.getPerformance()).isEqualTo(1);
-    }
-
-    /**
-     *
-     * @throws EmployeException Si le matricule ,le caTraite ou objectifCa n'as pas une valeur correcte
-     */
-    @Test
-    // 🚩 Il n'y a un qu'un commercial save en bdd avec une perf de base de 1 au début de ces tests.
-    // Au moment où l'on va contrôler si sa nouvelle perf (qui est de 1 + 1 dans ce cas de test car cas 3)
-    // est supérieur a la moyenne de des perfs en bdd qui est de 1 .
-    // alors on lui ajoute +1
-    public void UnitTestCalculPerformanceCommercialCAS4() throws EmployeException {
-        // GIVEN
-        employeService.embaucheEmploye("Joel","Bill",Poste.COMMERCIAL,NiveauEtude.LICENCE,1.0);
-
-        //WHEN
-        Employe employe =  employeService.calculPerformanceCommercial("C00001",1051l,1000L);
-
+        employeService.calculPerformanceCommercial("C00001",1051l,1000L);
+        Employe employe = employeRepository.findAll().stream().findFirst().get();
         //THEN
          Assertions.assertThat(employe.getPerformance()).isEqualTo(3);
     }
@@ -168,13 +162,13 @@ public class EmployeServiceIntegrationTest {
      */
     @Test
     // Infos identique au CAS4
-    public void UnitTestCalculPerformanceCommercialCAS5() throws EmployeException {
+    public void CalculPerformanceCommercialCAS5() throws EmployeException {
         // GIVEN
         employeService.embaucheEmploye("Joel","Bill",Poste.COMMERCIAL,NiveauEtude.LICENCE,1.0);
 
         //WHEN
-        Employe employe =  employeService.calculPerformanceCommercial("C00001",1201l,1000L);
-
+        employeService.calculPerformanceCommercial("C00001",1201l,1000L);
+        Employe employe = employeRepository.findAll().stream().findFirst().get();
         //THEN
          Assertions.assertThat(employe.getPerformance()).isEqualTo(6);
     }
@@ -187,7 +181,7 @@ public class EmployeServiceIntegrationTest {
      */
     @Test
     // CAS SI L'EMPLOYE EST EN CAS 5 MAIS AVEC UNE PERF INFERIEUR A LA MOYENNE DE COMMERCIAUX.
-    public void UnitTestCalculPerformanceCommercialCAS5WithAvgInf() throws EmployeException {
+    public void CalculPerformanceCommercialCAS5WithAvgInf() throws EmployeException {
         // GIVEN
 
         employeService.embaucheEmploye("Joel","Bill",Poste.COMMERCIAL,NiveauEtude.LICENCE,1.0);
@@ -198,8 +192,10 @@ public class EmployeServiceIntegrationTest {
         //WHEN
         employeService.calculPerformanceCommercial("C00001",1201l,1000L); // Bill perf = 6
         employeService.calculPerformanceCommercial("C00001",1201l,1000L); // Bill perf = 11 car currentPerf ici est inf à AvgBDD qui est à 6.
-        Employe employe =  employeService.calculPerformanceCommercial("C00002",1201l,1000L); //Steve = 5  (car AVG = 11 (bill) + 1 (steve old perf) /2)
+        employeService.calculPerformanceCommercial("C00002",1201l,1000L); //Steve = 5  (car AVG = 11 (bill) + 1 (steve old perf) /2)
+        List<Employe> employeList = employeRepository.findAll();
 
+        Employe employe =  employeList.get(employeList.size()-1);
         //THEN
          Assertions.assertThat(employe.getPerformance()).isEqualTo(5);
     }

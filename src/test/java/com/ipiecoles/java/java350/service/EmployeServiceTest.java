@@ -2,6 +2,7 @@ package com.ipiecoles.java.java350.service;
 
 
 import com.ipiecoles.java.java350.Employe;
+import com.ipiecoles.java.java350.Entreprise;
 import com.ipiecoles.java.java350.NiveauEtude;
 import com.ipiecoles.java.java350.Poste;
 import com.ipiecoles.java.java350.exception.EmployeException;
@@ -9,6 +10,8 @@ import com.ipiecoles.java.java350.repository.EmployeRepository;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.mockito.*;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.slf4j.LoggerFactory;
@@ -29,9 +32,6 @@ public class EmployeServiceTest {
 
     @Mock
     EmployeRepository employeRepository;
-
-    @Autowired
-    EmployeService employeServiceNoMock;
 
     @Test
     public void testEmbauchePremierEmploye() throws EmployeException {
@@ -156,5 +156,56 @@ public class EmployeServiceTest {
             - Création des mocks pour transformer .
 
      =====================================================================================================*/
+        /* Objectifs = 1000
+         *   CAS 1 : si CA inférieur à 800 alors perf =1
+         *   CAS 2 : si CA entre 800 et 950 alors perf -= 2;
+         *   CAS 3 : si CA entre 950 et 1050 alors perf = perf;
+         *   CAS 4 : si CA entre 1050 et 1200 alors perf += 1
+         *   CAS 5 : si CA supérieur à 1200 alors perf +=4
+         *
+         * Si new perf supérieur a la moyenne des perf alors perf += 1
+         */
+
+    /**
+     *
+     * @throws EmployeException Si le matricule ,le caTraite ou objectifCa n'as pas une valeur correcte
+     */
+    @ParameterizedTest(name = "chiffre affaire: {0} , performance resultat {1}")
+    @CsvSource({
+            " 0 , 1 ",
+            " 850 , 1 ",
+            " 1050 , 1 ",
+            " 1051 , 3 ",
+            " 1201 , 6 ",
+    })
+    void UnitTestCalculPerformanceCommercialAugmentation(long chiffreAffaire,Integer performanceAttendu) throws EmployeException {
+        //GIVEN
+        String matricule = "C00001";
+        long objectif= 1000L;
+        Employe employe = new Employe("Musk","Ellon",matricule,LocalDate.now(), Entreprise.SALAIRE_BASE,1,1.0);
+        Mockito.when(employeRepository.findByMatricule(matricule)).thenReturn(employe);
+        Mockito.when(employeRepository.avgPerformanceWhereMatriculeStartsWith("C")).thenReturn(1.0);
+        // permet au mock de renvoyé l'employé passe en argument à la méthode save:
+        Mockito.when(employeRepository.save(Mockito.any(Employe.class))).thenAnswer(AdditionalAnswers.returnsFirstArg());
+
+        //WHEN
+        employeService.calculPerformanceCommercial(matricule,chiffreAffaire,objectif);
+
+        //THEN
+
+        ArgumentCaptor<Employe> employeCaptor = ArgumentCaptor.forClass(Employe.class);
+        Mockito.verify(employeRepository).save(employeCaptor.capture());
+        Employe employeWithNewPerformance =employeCaptor.getValue();
+        Assertions.assertThat(employeWithNewPerformance.getPerformance()).isEqualTo(performanceAttendu);
+    }
+
+
+    // TODO tester la diminution de la performance.
+
+    // TODO CAS5WithAvgInf.
+
+
+
+
 
 }
