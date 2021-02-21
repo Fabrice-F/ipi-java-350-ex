@@ -14,19 +14,18 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 import org.mockito.*;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.EntityExistsException;
 import java.time.LocalDate;
-import java.util.logging.Logger;
 
 
 @ExtendWith(MockitoExtension.class)
 public class EmployeServiceTest {
 
-    private static org.slf4j.Logger logger = LoggerFactory.getLogger(EmployeServiceTest.class);
-
+    private static Logger logger = LoggerFactory.getLogger(EmployeServiceTest.class);
     @InjectMocks
     EmployeService employeService;
 
@@ -199,13 +198,36 @@ public class EmployeServiceTest {
         Assertions.assertThat(employeWithNewPerformance.getPerformance()).isEqualTo(performanceAttendu);
     }
 
+    /**
+     * Test si la diminution de la performance d'un employé se décrémente correctement et ne tombe pas en négatif
+     * et de l'ajout du +1 si malgré la décrémentation la perf de l'employé est sup a la moyenne.
+     * Cas 2 utilisé ( -2 perf )
+     */
+    @ParameterizedTest(name = "Performance de l employé avant calcul: {0}, perf attendu: {1}")
+    @CsvSource({
+            " 1 , 1 ",
+            " 2 , 1 ",
+            " 3 , 1 ",
+            " 4 , 3 ", // vu que le mock retourne une moyenne de 1 et qu'on a un perf de 2 ( 4 -2 ) alors on ajoute +1 a la perf de l'employé.
+    })
+    public void UnitTestCalculPerformanceCommercialDiminution(Integer perfDeBase,Integer performanceAttendu) throws EmployeException {
+        String matricule = "C00001";
+        long objectif= 1000L;
+        long chiffreAffaire = 802l;
+        Employe employe = new Employe("Musk","Ellon",matricule,LocalDate.now(), Entreprise.SALAIRE_BASE,perfDeBase,1.0);
+        Mockito.when(employeRepository.findByMatricule(matricule)).thenReturn(employe);
+        Mockito.when(employeRepository.avgPerformanceWhereMatriculeStartsWith("C")).thenReturn(1.0);
+        Mockito.when(employeRepository.save(Mockito.any(Employe.class))).thenAnswer(AdditionalAnswers.returnsFirstArg());
 
-    // TODO tester la diminution de la performance.
+        //WHEN
+        employeService.calculPerformanceCommercial(matricule,chiffreAffaire,objectif);
 
-    // TODO CAS5WithAvgInf.
+        //THEN
 
-
-
-
+        ArgumentCaptor<Employe> employeCaptor = ArgumentCaptor.forClass(Employe.class);
+        Mockito.verify(employeRepository).save(employeCaptor.capture());
+        Employe employeWithNewPerformance =employeCaptor.getValue();
+        Assertions.assertThat(employeWithNewPerformance.getPerformance()).isEqualTo(performanceAttendu);
+    }
 
 }

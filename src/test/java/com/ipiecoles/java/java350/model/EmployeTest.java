@@ -32,7 +32,7 @@ public class EmployeTest {
     // Given: Initialisation des données d'entrée.
         Employe employee = new Employe();
         employee.setDateEmbauche(null);
-        
+
     // When : Exécution de la méthode à tester.
         Integer AnneeAnciennete =  employee.getNombreAnneeAnciennete();
 

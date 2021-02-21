@@ -17,12 +17,12 @@ Infos :
 
 -- java null pointer date inférieur à 2015 ou supérieur à 2040.  (2015/2016/2017/2018) ont été volontairement rajouté pour vérifié année bisextile qui commence par un vendredi (2016)
 
-## (3) Tester sans dépendance calculPerformanceCommercial d'EmployeService
+## (3) OK :S Tester sans dépendance calculPerformanceCommercial d'EmployeService
 - Tester sans dépendance à la BDD la méthode `calculPerformanceCommercial` d'`EmployeService`
 
 ## (4) Tests d'intégration :
 
-- Tester de manière intégrée une cas nominal de la méthode précédente
+- OK => Tester de manière intégrée une cas nominal de la méthode précédente
 - Tester de manière intégrée la méthode d'`EmployeRepository` `avgPerformanceWhereMatriculeStartsWith`
 - BONUS Ecrire un test d'acceptation Gauge pour la fonctionnalité de calcul de performance d'un commercial.
 
