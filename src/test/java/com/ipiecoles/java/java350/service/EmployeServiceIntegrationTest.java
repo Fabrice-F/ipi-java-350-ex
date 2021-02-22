@@ -10,6 +10,8 @@ import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -29,7 +31,7 @@ public class EmployeServiceIntegrationTest {
     EmployeRepository employeRepository;
 
     @Test
-    void testEmbauchePremierEmploye() throws EmployeException {
+    void TestEmbauchePremierEmploye() throws EmployeException {
         //GIVEN
         String nom = "Doe";
         String prenom ="John";
@@ -68,95 +70,26 @@ public class EmployeServiceIntegrationTest {
     * Si new perf supérieur a la moyenne des perf alors perf += 1
     */
 
-
-    /**
-     *
-     * @throws EmployeException Si le matricule ,le caTraite ou objectifCa n'as pas une valeur correcte
-     */
-    @Test
-    void CalculPerformanceCommercialCAS1() throws EmployeException {
+    @ParameterizedTest(name = "chiffre affaire: {0} , perf attendu {1}")
+    @CsvSource({
+        " 0, 1 ", // CAS 1
+        " 850, 1 ", // CAS 2
+        " 1050, 1 ", // CAS 3
+        " 1051, 3 ", // CAS 4 (+1 perf > avg)
+        " 1201, 6 ", // CAS 5 (+1 perf > avg)
+    })
+    void TestCalculCommercialTestAllCas(long chiffreAffaire, Integer perfAttendue) throws EmployeException {
         // GIVEN
 
-             // Ajout d'un second commercial => matricule C00001 et perf 1 :
         employeService.embaucheEmploye("Joel","Bill",Poste.COMMERCIAL,NiveauEtude.LICENCE,1.0);
 
         //WHEN
 
-        employeService.calculPerformanceCommercial("C00001",0l,1000L);
-        Employe employe = employeRepository.findAll().stream().findFirst().get();
-
-                //THEN
-         Assertions.assertThat(employe.getPerformance()).isEqualTo(1);
-    }
-
-    /**
-     *
-     * @throws EmployeException Si le matricule ,le caTraite ou objectifCa n'as pas une valeur correcte
-     */
-    @Test
-    void CalculPerformanceCommercialCAS2() throws EmployeException {
-        // GIVEN
-        employeService.embaucheEmploye("Joel","Bill",Poste.COMMERCIAL,NiveauEtude.LICENCE,1.0);
-
-        //WHEN
-        employeService.calculPerformanceCommercial("C00001",850l,1000L);
+        employeService.calculPerformanceCommercial("C00001",chiffreAffaire,1000L);
         Employe employe = employeRepository.findAll().stream().findFirst().get();
 
         //THEN
-         Assertions.assertThat(employe.getPerformance()).isEqualTo(1);
-    }
-
-    /**
-     *
-     * @throws EmployeException Si le matricule ,le caTraite ou objectifCa n'as pas une valeur correcte
-     */
-    @Test
-    void CalculPerformanceCommercialCAS3() throws EmployeException {
-        // GIVEN
-        employeService.embaucheEmploye("Joel","Bill",Poste.COMMERCIAL,NiveauEtude.LICENCE,1.0);
-
-        //WHEN
-        employeService.calculPerformanceCommercial("C00001",1050l,1000L);
-        Employe employe = employeRepository.findAll().stream().findFirst().get();
-        //THEN
-         Assertions.assertThat(employe.getPerformance()).isEqualTo(1);
-    }
-
-    /**
-     *
-     * @throws EmployeException Si le matricule ,le caTraite ou objectifCa n'as pas une valeur correcte
-     */
-    @Test
-    // 🚩 Il n'y a un qu'un commercial save en bdd avec une perf de base de 1 au début de ces tests.
-    // Au moment où l'on va contrôler si sa nouvelle perf (qui est de 1 + 1 dans ce cas de test car cas 3)
-    // est supérieur a la moyenne de des perfs en bdd qui est de 1 .
-    // alors on lui ajoute +1
-    void CalculPerformanceCommercialCAS4() throws EmployeException {
-        // GIVEN
-        employeService.embaucheEmploye("Joel","Bill",Poste.COMMERCIAL,NiveauEtude.LICENCE,1.0);
-
-        //WHEN
-        employeService.calculPerformanceCommercial("C00001",1051l,1000L);
-        Employe employe = employeRepository.findAll().stream().findFirst().get();
-        //THEN
-         Assertions.assertThat(employe.getPerformance()).isEqualTo(3);
-    }
-
-    /**
-     *
-     * @throws EmployeException Si le matricule ,le caTraite ou objectifCa n'as pas une valeur correcte
-     */
-    @Test
-    // Infos identique au CAS4
-    void CalculPerformanceCommercialCAS5() throws EmployeException {
-        // GIVEN
-        employeService.embaucheEmploye("Joel","Bill",Poste.COMMERCIAL,NiveauEtude.LICENCE,1.0);
-
-        //WHEN
-        employeService.calculPerformanceCommercial("C00001",1201l,1000L);
-        Employe employe = employeRepository.findAll().stream().findFirst().get();
-        //THEN
-         Assertions.assertThat(employe.getPerformance()).isEqualTo(6);
+        Assertions.assertThat(employe.getPerformance()).isEqualTo(perfAttendue);
     }
 
     /**
@@ -167,7 +100,7 @@ public class EmployeServiceIntegrationTest {
      */
     @Test
     // CAS SI L'EMPLOYE EST EN CAS 5 MAIS AVEC UNE PERF INFERIEUR A LA MOYENNE DE COMMERCIAUX.
-    void CalculPerformanceCommercialCAS5WithAvgInf() throws EmployeException {
+    void TestCalculPerformanceCommercialCAS5WithAvgInf() throws EmployeException {
         // GIVEN
 
         employeService.embaucheEmploye("Joel","Bill",Poste.COMMERCIAL,NiveauEtude.LICENCE,1.0);

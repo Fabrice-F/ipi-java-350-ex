@@ -19,3 +19,79 @@
 2021-02-22 10:50:11 - INFO  - Starting EmployeRepositoryTest on DESKTOP-P0UDKGU with PID 9572 (started by fabrice ferrere in H:\ALL GIT\Java git prof\ipi-java-350-ex)
 2021-02-22 10:50:11 - INFO  - No active profile set, falling back to default profiles: default
 2021-02-22 10:50:13 - INFO  - Started EmployeRepositoryTest in 1.647 seconds (JVM running for 2.421)
+2021-02-22 11:09:04 - INFO  - Starting EmployeServiceIntegrationTest on DESKTOP-P0UDKGU with PID 20056 (started by fabrice ferrere in H:\ALL GIT\Java git prof\ipi-java-350-ex)
+2021-02-22 11:09:04 - INFO  - No active profile set, falling back to default profiles: default
+2021-02-22 11:09:05 - INFO  - Started EmployeServiceIntegrationTest in 1.807 seconds (JVM running for 2.556)
+2021-02-22 11:09:06 - INFO  - Embauche d'un employé avec les infos suivantes : nom:Joel ,prenom: Bill , poste: COMMERCIAL , niveau d'étude: LICENCE , taux d'activité 1.0 
+2021-02-22 11:09:06 - WARN  - matricule par defaut affecté
+2021-02-22 11:09:06 - INFO  - employe enregistrer: Employe{, nom='Joel', prenom='Bill', matricule='C00001', dateEmbauche=2021-02-22, salaire=1825.46, performance=1, tempsPartiel=1.0}
+2021-02-22 11:10:39 - INFO  - Starting EmployeServiceIntegrationTest on DESKTOP-P0UDKGU with PID 12628 (started by fabrice ferrere in H:\ALL GIT\Java git prof\ipi-java-350-ex)
+2021-02-22 11:10:39 - INFO  - No active profile set, falling back to default profiles: default
+2021-02-22 11:10:40 - INFO  - Started EmployeServiceIntegrationTest in 1.805 seconds (JVM running for 2.548)
+2021-02-22 11:10:40 - INFO  - Embauche d'un employé avec les infos suivantes : nom:Joel ,prenom: Bill , poste: COMMERCIAL , niveau d'étude: LICENCE , taux d'activité 1.0 
+2021-02-22 11:10:40 - WARN  - matricule par defaut affecté
+2021-02-22 11:10:41 - INFO  - employe enregistrer: Employe{, nom='Joel', prenom='Bill', matricule='C00001', dateEmbauche=2021-02-22, salaire=1825.46, performance=1, tempsPartiel=1.0}
+2021-02-22 11:10:41 - INFO  - Embauche d'un employé avec les infos suivantes : nom:Joel ,prenom: Bill , poste: COMMERCIAL , niveau d'étude: LICENCE , taux d'activité 1.0 
+2021-02-22 11:10:41 - WARN  - matricule par defaut affecté
+2021-02-22 11:10:41 - INFO  - employe enregistrer: Employe{, nom='Joel', prenom='Bill', matricule='C00001', dateEmbauche=2021-02-22, salaire=1825.46, performance=1, tempsPartiel=1.0}
+2021-02-22 11:10:41 - INFO  - Embauche d'un employé avec les infos suivantes : nom:Joel ,prenom: Bill , poste: COMMERCIAL , niveau d'étude: LICENCE , taux d'activité 1.0 
+2021-02-22 11:10:41 - WARN  - matricule par defaut affecté
+2021-02-22 11:10:41 - INFO  - employe enregistrer: Employe{, nom='Joel', prenom='Bill', matricule='C00001', dateEmbauche=2021-02-22, salaire=1825.46, performance=1, tempsPartiel=1.0}
+2021-02-22 11:10:41 - INFO  - Embauche d'un employé avec les infos suivantes : nom:Joel ,prenom: Bill , poste: COMMERCIAL , niveau d'étude: LICENCE , taux d'activité 1.0 
+2021-02-22 11:10:41 - WARN  - matricule par defaut affecté
+2021-02-22 11:10:41 - INFO  - employe enregistrer: Employe{, nom='Joel', prenom='Bill', matricule='C00001', dateEmbauche=2021-02-22, salaire=1825.46, performance=1, tempsPartiel=1.0}
+2021-02-22 11:10:41 - INFO  - Embauche d'un employé avec les infos suivantes : nom:Joel ,prenom: Bill , poste: COMMERCIAL , niveau d'étude: LICENCE , taux d'activité 1.0 
+2021-02-22 11:10:41 - WARN  - matricule par defaut affecté
+2021-02-22 11:10:41 - INFO  - employe enregistrer: Employe{, nom='Joel', prenom='Bill', matricule='C00001', dateEmbauche=2021-02-22, salaire=1825.46, performance=1, tempsPartiel=1.0}
+2021-02-22 11:13:36 - INFO  - Starting EmployeServiceIntegrationTest on DESKTOP-P0UDKGU with PID 12356 (started by fabrice ferrere in H:\ALL GIT\Java git prof\ipi-java-350-ex)
+2021-02-22 11:13:36 - INFO  - No active profile set, falling back to default profiles: default
+2021-02-22 11:13:38 - INFO  - Started EmployeServiceIntegrationTest in 1.789 seconds (JVM running for 2.516)
+2021-02-22 11:13:38 - INFO  - Embauche d'un employé avec les infos suivantes : nom:Joel ,prenom: Bill , poste: COMMERCIAL , niveau d'étude: LICENCE , taux d'activité 1.0 
+2021-02-22 11:13:38 - WARN  - matricule par defaut affecté
+2021-02-22 11:13:38 - INFO  - employe enregistrer: Employe{, nom='Joel', prenom='Bill', matricule='C00001', dateEmbauche=2021-02-22, salaire=1825.46, performance=1, tempsPartiel=1.0}
+2021-02-22 11:13:38 - INFO  - Embauche d'un employé avec les infos suivantes : nom:Jobs ,prenom: Steve , poste: COMMERCIAL , niveau d'étude: LICENCE , taux d'activité 1.0 
+2021-02-22 11:13:38 - INFO  - employe enregistrer: Employe{, nom='Jobs', prenom='Steve', matricule='C00002', dateEmbauche=2021-02-22, salaire=1825.46, performance=1, tempsPartiel=1.0}
+2021-02-22 11:13:38 - INFO  - Embauche d'un employé avec les infos suivantes : nom:Joel ,prenom: Bill , poste: COMMERCIAL , niveau d'étude: LICENCE , taux d'activité 1.0 
+2021-02-22 11:13:38 - WARN  - matricule par defaut affecté
+2021-02-22 11:13:38 - INFO  - employe enregistrer: Employe{, nom='Joel', prenom='Bill', matricule='C00001', dateEmbauche=2021-02-22, salaire=1825.46, performance=1, tempsPartiel=1.0}
+2021-02-22 11:13:38 - INFO  - Embauche d'un employé avec les infos suivantes : nom:Joel ,prenom: Bill , poste: COMMERCIAL , niveau d'étude: LICENCE , taux d'activité 1.0 
+2021-02-22 11:13:38 - WARN  - matricule par defaut affecté
+2021-02-22 11:13:38 - INFO  - employe enregistrer: Employe{, nom='Joel', prenom='Bill', matricule='C00001', dateEmbauche=2021-02-22, salaire=1825.46, performance=1, tempsPartiel=1.0}
+2021-02-22 11:13:38 - INFO  - Embauche d'un employé avec les infos suivantes : nom:Joel ,prenom: Bill , poste: COMMERCIAL , niveau d'étude: LICENCE , taux d'activité 1.0 
+2021-02-22 11:13:38 - WARN  - matricule par defaut affecté
+2021-02-22 11:13:38 - INFO  - employe enregistrer: Employe{, nom='Joel', prenom='Bill', matricule='C00001', dateEmbauche=2021-02-22, salaire=1825.46, performance=1, tempsPartiel=1.0}
+2021-02-22 11:13:38 - INFO  - Embauche d'un employé avec les infos suivantes : nom:Joel ,prenom: Bill , poste: COMMERCIAL , niveau d'étude: LICENCE , taux d'activité 1.0 
+2021-02-22 11:13:38 - WARN  - matricule par defaut affecté
+2021-02-22 11:13:38 - INFO  - employe enregistrer: Employe{, nom='Joel', prenom='Bill', matricule='C00001', dateEmbauche=2021-02-22, salaire=1825.46, performance=1, tempsPartiel=1.0}
+2021-02-22 11:13:38 - INFO  - Embauche d'un employé avec les infos suivantes : nom:Joel ,prenom: Bill , poste: COMMERCIAL , niveau d'étude: LICENCE , taux d'activité 1.0 
+2021-02-22 11:13:38 - WARN  - matricule par defaut affecté
+2021-02-22 11:13:38 - INFO  - employe enregistrer: Employe{, nom='Joel', prenom='Bill', matricule='C00001', dateEmbauche=2021-02-22, salaire=1825.46, performance=1, tempsPartiel=1.0}
+2021-02-22 11:13:38 - INFO  - Embauche d'un employé avec les infos suivantes : nom:Doe ,prenom: John , poste: TECHNICIEN , niveau d'étude: BTS_IUT , taux d'activité 1.0 
+2021-02-22 11:13:38 - WARN  - matricule par defaut affecté
+2021-02-22 11:13:38 - INFO  - employe enregistrer: Employe{, nom='Doe', prenom='John', matricule='T00001', dateEmbauche=2021-02-22, salaire=1825.46, performance=1, tempsPartiel=1.0}
+2021-02-22 11:14:00 - INFO  - Starting EmployeServiceIntegrationTest on DESKTOP-P0UDKGU with PID 13108 (started by fabrice ferrere in H:\ALL GIT\Java git prof\ipi-java-350-ex)
+2021-02-22 11:14:00 - INFO  - No active profile set, falling back to default profiles: default
+2021-02-22 11:14:02 - INFO  - Started EmployeServiceIntegrationTest in 1.833 seconds (JVM running for 2.578)
+2021-02-22 11:14:02 - INFO  - Embauche d'un employé avec les infos suivantes : nom:Joel ,prenom: Bill , poste: COMMERCIAL , niveau d'étude: LICENCE , taux d'activité 1.0 
+2021-02-22 11:14:02 - WARN  - matricule par defaut affecté
+2021-02-22 11:14:02 - INFO  - employe enregistrer: Employe{, nom='Joel', prenom='Bill', matricule='C00001', dateEmbauche=2021-02-22, salaire=1825.46, performance=1, tempsPartiel=1.0}
+2021-02-22 11:14:02 - INFO  - Embauche d'un employé avec les infos suivantes : nom:Joel ,prenom: Bill , poste: COMMERCIAL , niveau d'étude: LICENCE , taux d'activité 1.0 
+2021-02-22 11:14:02 - WARN  - matricule par defaut affecté
+2021-02-22 11:14:02 - INFO  - employe enregistrer: Employe{, nom='Joel', prenom='Bill', matricule='C00001', dateEmbauche=2021-02-22, salaire=1825.46, performance=1, tempsPartiel=1.0}
+2021-02-22 11:14:02 - INFO  - Embauche d'un employé avec les infos suivantes : nom:Joel ,prenom: Bill , poste: COMMERCIAL , niveau d'étude: LICENCE , taux d'activité 1.0 
+2021-02-22 11:14:02 - WARN  - matricule par defaut affecté
+2021-02-22 11:14:02 - INFO  - employe enregistrer: Employe{, nom='Joel', prenom='Bill', matricule='C00001', dateEmbauche=2021-02-22, salaire=1825.46, performance=1, tempsPartiel=1.0}
+2021-02-22 11:14:02 - INFO  - Embauche d'un employé avec les infos suivantes : nom:Joel ,prenom: Bill , poste: COMMERCIAL , niveau d'étude: LICENCE , taux d'activité 1.0 
+2021-02-22 11:14:02 - WARN  - matricule par defaut affecté
+2021-02-22 11:14:02 - INFO  - employe enregistrer: Employe{, nom='Joel', prenom='Bill', matricule='C00001', dateEmbauche=2021-02-22, salaire=1825.46, performance=1, tempsPartiel=1.0}
+2021-02-22 11:14:02 - INFO  - Embauche d'un employé avec les infos suivantes : nom:Joel ,prenom: Bill , poste: COMMERCIAL , niveau d'étude: LICENCE , taux d'activité 1.0 
+2021-02-22 11:14:02 - WARN  - matricule par defaut affecté
+2021-02-22 11:14:02 - INFO  - employe enregistrer: Employe{, nom='Joel', prenom='Bill', matricule='C00001', dateEmbauche=2021-02-22, salaire=1825.46, performance=1, tempsPartiel=1.0}
+2021-02-22 11:14:02 - INFO  - Embauche d'un employé avec les infos suivantes : nom:Joel ,prenom: Bill , poste: COMMERCIAL , niveau d'étude: LICENCE , taux d'activité 1.0 
+2021-02-22 11:14:02 - WARN  - matricule par defaut affecté
+2021-02-22 11:14:02 - INFO  - employe enregistrer: Employe{, nom='Joel', prenom='Bill', matricule='C00001', dateEmbauche=2021-02-22, salaire=1825.46, performance=1, tempsPartiel=1.0}
+2021-02-22 11:14:02 - INFO  - Embauche d'un employé avec les infos suivantes : nom:Jobs ,prenom: Steve , poste: COMMERCIAL , niveau d'étude: LICENCE , taux d'activité 1.0 
+2021-02-22 11:14:02 - INFO  - employe enregistrer: Employe{, nom='Jobs', prenom='Steve', matricule='C00002', dateEmbauche=2021-02-22, salaire=1825.46, performance=1, tempsPartiel=1.0}
+2021-02-22 11:14:02 - INFO  - Embauche d'un employé avec les infos suivantes : nom:Doe ,prenom: John , poste: TECHNICIEN , niveau d'étude: BTS_IUT , taux d'activité 1.0 
+2021-02-22 11:14:02 - WARN  - matricule par defaut affecté
+2021-02-22 11:14:02 - INFO  - employe enregistrer: Employe{, nom='Doe', prenom='John', matricule='T00001', dateEmbauche=2021-02-22, salaire=1825.46, performance=1, tempsPartiel=1.0}
