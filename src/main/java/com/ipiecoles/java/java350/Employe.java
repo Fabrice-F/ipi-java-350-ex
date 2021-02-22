@@ -87,6 +87,7 @@ public class Employe {
             case FRIDAY:
                 // si on commence le vendredi et année bisextile.
                 if (dateReference.isLeapYear()) nbSamediDimanche = nbSamediDimanche + 2;
+                // non bisextile
                 else nbSamediDimanche = nbSamediDimanche + 1;
                 break;
             case SATURDAY:
@@ -95,7 +96,6 @@ public class Employe {
         }
         // Calcul nombre de jour férié ne tombant pas le week end :
         int nbJourFeriesSemaine = (int) Entreprise.joursFeries(dateReference).stream().filter(localDate -> localDate.getDayOfWeek().getValue() <= DayOfWeek.FRIDAY.getValue()).count();
-
 
         return (int) Math.ceil((nbJourAnnee - Entreprise.NB_JOURS_MAX_FORFAIT - nbSamediDimanche - Entreprise.NB_CONGES_BASE - nbJourFeriesSemaine) * tempsPartiel);
     }
@@ -138,7 +138,15 @@ public class Employe {
     }
 
     //Augmenter salaire
-    //public void augmenterSalaire(double pourcentage){}
+    public void augmenterSalaire(double pourcentage){
+        if(this.salaire == null)
+            return;
+        if(pourcentage<0)
+            return;
+
+        double nouveauSalaire  = this.salaire + (this.salaire * pourcentage /100);
+        this.salaire =  Math.round(nouveauSalaire * 100) / 100d;
+    }
 
     public Long getId() {
         return id;

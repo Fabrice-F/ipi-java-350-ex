@@ -26,11 +26,11 @@ public class EmployeTest {
     }
 
     @Test
-    void testIfNombreAnneeAncienneteIsNotNull() {
+    void testIfNombreAnneeAncienneteIsNull() {
     // Given: Initialisation des données d'entrée.
         Employe employee = new Employe();
         employee.setDateEmbauche(null);
-        
+
     // When : Exécution de la méthode à tester.
         Integer AnneeAnciennete =  employee.getNombreAnneeAnciennete();
 
@@ -50,6 +50,7 @@ public class EmployeTest {
         // Then: Vérifications de ce qu'a fait la méthode.
         Assertions.assertThat(AnneeAnciennete).isNull();
     }
+
     @Test
     void testIfNombreAnneeAncienneteIsNow() {
         // Given: Initialisation des données d'entrée.
@@ -83,8 +84,6 @@ public class EmployeTest {
     // écrire un premier test unitaire classique testant un de vos scénarios.
     // dupliquer et transformer ce test en test paramétré pour ajouter facilement les autres scénarios.
     // résultat avec isequalTo.
-
-
 
     @Test
     void testIfMatriculeEmployeIsEmpty(){
@@ -140,4 +139,183 @@ public class EmployeTest {
         Assertions.assertThat(prime).isEqualTo(1000.0);
     }
 
+    @Test
+    void TestGetPrimeAnnuelIfPerfIsNull(){
+
+        Employe employee = new Employe("JOB","Steve","T001",
+                LocalDate.now(),1400d,null,1.0d);
+
+        //WHEN
+        Double prime = employee.getPrimeAnnuelle();
+
+        //THEN
+
+        Assertions.assertThat(prime).isEqualTo(1000.0);
+    }
+
+    /* =====================================================================================================
+                                        TEST AUGMENTATION SALAIRE EXERCICE 1
+
+        * Augmentation salaire : Augmente le salaire de l'employé  en fonction du pourcentage passé en paramètre *
+
+        Formule :
+            [Valeur 1] + ([Valeur 1] x [Pourcentage] / 100) = résultat
+     =====================================================================================================*/
+
+    // cas testé et cas limite :
+        // AugmentationPar0
+        // SimpleAugmentation
+        // IfAugmentationNegative
+        // chiffre après la virgule < 2
+        // si salaire de base non renseigné.
+
+
+    /**
+     * Test si l'employe n'as pas d'augmentation si le pourcentage est égale à 0
+     */
+    @Test
+    void testAugmentationSalaireIfPourcentageZero(){
+        //GIVEN
+        Employe employe = new Employe();
+        employe.setSalaire(1200.0);
+
+        //WHEN
+        employe.augmenterSalaire(0.0);
+
+        //THEN
+
+        Assertions.assertThat(employe.getSalaire()).isEqualTo(1200.0);
+    }
+
+    /**
+     * Test qui va vérifié si lorsque l'on appelle la méthode
+     * avec en paramètre pourcentage le salaire de l'employé s'augmente correctement.
+     */
+    @ParameterizedTest(name = "Salaire : {0} augmenté a {1}% cela donne : {2}")
+    @CsvSource({
+            "1000 , 10.0 , 1100",
+            "1300 , 23 , 1599",
+            "2200 , 50, 3300",
+    })
+    void TestAugmentationSalaireSimpleAugmentation(double AncienSalaire, double pourcentage ,double salaireAttendu ){
+        //GIVEN
+        Employe employe = new Employe();
+        employe.setSalaire(AncienSalaire);
+
+        // WHEN
+        employe.augmenterSalaire(pourcentage);
+
+        //THEN
+        Assertions.assertThat(employe.getSalaire()).isEqualTo(salaireAttendu);
+    }
+
+    /**
+     *
+     * test qui vérifie si l'arrondis ce fait correctement
+     * si le salaire à plus de deux chiffres après la virgule
+     */
+    @ParameterizedTest(name = "salaire avec virgule {0}, agmentation avec virgule {1}, salaire attendue {2}")
+    @CsvSource({
+            "1399.99 , 33.9987 , 1875.97 ", // arrondi supérieur : 1875.96840013
+            "1288.66 , 3.123, 1328.90 ",    // arrondi inférieur : 1328.9048518
+    })
+    void TestAugmentationSalaireMax2ChiffreApresVirgule(double AncienSalaire, double pourcentage ,double salaireAttendu ){
+        //GIVEN
+
+        Employe employe = new Employe();
+        employe.setSalaire(AncienSalaire);
+
+        // WHEN
+        employe.augmenterSalaire(pourcentage);
+
+        //THEN
+        Assertions.assertThat(employe.getSalaire()).isEqualTo(salaireAttendu);
+
+    }
+
+    /**
+     * Test si lorsqu'un pourcentage négatif est passé en paramètre
+     * le salaire n'est pas impacté car cela est interdit.
+     */
+    @Test
+    void TestAugmentationSalaireIfAugmentationNegative(){
+        //GIVEN
+        Employe employe = new Employe();
+        employe.setSalaire(1000.0);
+
+        // WHEN
+        employe.augmenterSalaire(-10.0);
+
+        //THEN
+        Assertions.assertThat(employe.getSalaire()).isEqualTo(1000.0);
+    }
+
+    /**
+     * Test si le salaire de l'employé est null alors il est impossible de l'augmenter
+     *
+     * possibilité dans ce cas de mettre le salaire par défaut de l'entreprise à l'employé
+     * mais je préfère garder cette version car la gestion d'un salaire null devrais se faire dans
+     * les getters setters plutot que dans la methode augmentesalaire
+     */
+    @Test
+    void TestAugmentationSalaireIfSalaireEmployeIsNull(){
+        //GIVEN
+        Employe employe = new Employe();
+        employe.setSalaire(null);
+
+        // WHEN
+        employe.augmenterSalaire(10.0);
+
+        //THEN
+        Assertions.assertThat(employe.getSalaire()).isNull();
+    }
+
+
+
+    /* =====================================================================================================
+                                    TEST getNbRtt EXERCICE 2
+
+        * Méthode permettant de calculer le nombre de jour dans l'année *
+
+        Formule :
+            Nombre de jours dans l'année - Nombre de jours travaillés dans l'année en plein temps -
+            Nombre de samedi et dimanche dans l'année - Nombre de jours fériés ne tombant pas le week-end -
+            Nombre de congés payés = Nombre de jour RTT
+
+        Cas particulier :
+            - Temps activité employé
+            - Année bisextile.
+            - Jour ou commence l'année.
+     =====================================================================================================*/
+
+    // TODO : Voir si on passe un temps partiel supérieur à 1.0 pk cela n'es pas gérer ?
+    // Je ne pense pas qe cela être traité dans ces tests ... ou certainement pas assuré une sécurité...
+
+    @ParameterizedTest(name = "temps activité: {0} annee: {1}, Rtt: {2}")
+    @CsvSource({
+            " 1 , 2032 ,11",
+            " 0.5 , 2032 ,6", // temps plein 11 jours alors mi-temps 6 jours actuellement es ce juste ?
+            " 0.25 , 2032 ,3", // temps plein 11 jours alors tiers temps 3 jours es ce juste ?
+            " 0.5 , 2022 ,5",
+            " 0.5 , 2019 ,4",
+            " 1, 2016 ,9 ", // bisextile et commence un vendredi
+            " 0.25, 2016 , 3", // tiers temps
+            " 1, 2022 , 10",
+            " 1, 2019 , 8",
+            " 1, 2026 , 9",
+            " 1, 2021 , 10"
+    })
+    void testgetNbRttTemps(Double tempsActivite, Integer annee, Integer rttJour){
+        //GIVEN
+        Employe e = new Employe();
+        e.setTempsPartiel(tempsActivite);
+
+        //WHEN
+        Integer nbRtt =  e.getNbRtt(LocalDate.of(annee,1,01));
+
+        //THEN
+        Assertions.assertThat(nbRtt).isEqualTo(rttJour);
+    }
+
 }
+
