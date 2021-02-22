@@ -201,7 +201,7 @@ public class EmployeTest {
     /**
      *
      * test qui vérifie si l'arrondis ce fait correctement
-     * si un résultat à plus de deux chiffres après la virgule
+     * si le salaire à plus de deux chiffres après la virgule
      */
     @ParameterizedTest(name = "salaire avec virgule {0}, agmentation avec virgule {1}, salaire attendue {2}")
     @CsvSource({
@@ -238,8 +238,13 @@ public class EmployeTest {
         //THEN
         Assertions.assertThat(employe.getSalaire()).isEqualTo(1000.0);
     }
+
     /**
      * Test si le salaire de l'employé est null alors il est impossible de l'augmenter
+     *
+     * possibilité dans ce cas de mettre le salaire par défaut de l'entreprise à l'employé
+     * mais je préfère garder cette version car la gestion d'un salaire null devrais se faire dans
+     * les getters setters plutot que dans la methode augmentesalaire
      */
     @Test
     void TestAugmentationSalaireIfSalaireEmployeIsNull(){

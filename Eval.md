@@ -7,7 +7,7 @@
 
 ** Il est clair que non, les cas limites comme la salaire à null ainsi que le salaire avec un nombre de chiffre après la virgule supérieur à 2 n'aurait pas été rélfléchis.**
 
-## (2) OK : Tester unitairement getNbRtt d'Employe
+## (2) OK => manque si temps partiel sup a 1 : Tester unitairement getNbRtt d'Employe
 Tester unitairement (en utilisant les tests paramétrés) la méthode `getNbRtt` d'`Employe`. Le nombre de RTT se calcule à partir de la formule suivante : **Nombre de jours dans l'année - Nombre de jours travaillés dans l'année en plein temps - Nombre de samedi et dimanche dans l'année - Nombre de jours fériés ne tombant pas le week-end - Nombre de congés payés**. Le tout au pro-rata du taux d'activité du salarié. **Attention**, des erreurs sont présentes dans cette méthode. Faites donc vos calculs avant et débugguer votre code pour trouver les erreurs. Aidez-vous de Sonar... Rendre cette méthode plus propre, documentée et lisible.
 Infos : 
   - 2019 : l'année est non bissextile, a débuté un mardi et il y a 10 jours fériés ne tombant pas le week-end. = 8 jours de rtt -> 4 a mi temps .

@@ -166,16 +166,16 @@ public class EmployeServiceTest {
          */
 
     /**
-     *
+     * test des augmentations simples
      * @throws EmployeException Si le matricule ,le caTraite ou objectifCa n'as pas une valeur correcte
      */
     @ParameterizedTest(name = "chiffre affaire: {0} , performance resultat {1}")
     @CsvSource({
-            " 0 , 1 ",
-            " 850 , 1 ",
-            " 1050 , 1 ",
-            " 1051 , 3 ",
-            " 1201 , 6 ",
+            " 0 , 1 ",  // CAS 1
+            " 850 , 1 ", // CAS 2
+            " 1050 , 1 ", // CAS 3
+            " 1051 , 3 ", // CAS 4 (+1 car perf>avg)
+            " 1201 , 6 ", // CAS 5 (+1 car perf>avg)
     })
     void UnitTestCalculPerformanceCommercialAugmentation(long chiffreAffaire,Integer performanceAttendu) throws EmployeException {
         //GIVEN
