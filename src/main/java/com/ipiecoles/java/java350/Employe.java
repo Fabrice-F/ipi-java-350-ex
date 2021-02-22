@@ -87,6 +87,7 @@ public class Employe {
             case FRIDAY:
                 // si on commence le vendredi et année bisextile.
                 if (dateReference.isLeapYear()) nbSamediDimanche = nbSamediDimanche + 2;
+                // non bisextile
                 else nbSamediDimanche = nbSamediDimanche + 1;
                 break;
             case SATURDAY:

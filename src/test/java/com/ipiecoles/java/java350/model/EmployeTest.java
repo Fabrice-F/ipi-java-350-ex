@@ -50,6 +50,7 @@ public class EmployeTest {
         // Then: Vérifications de ce qu'a fait la méthode.
         Assertions.assertThat(AnneeAnciennete).isNull();
     }
+
     @Test
     void testIfNombreAnneeAncienneteIsNow() {
         // Given: Initialisation des données d'entrée.
@@ -83,8 +84,6 @@ public class EmployeTest {
     // écrire un premier test unitaire classique testant un de vos scénarios.
     // dupliquer et transformer ce test en test paramétré pour ajouter facilement les autres scénarios.
     // résultat avec isequalTo.
-
-
 
     @Test
     void testIfMatriculeEmployeIsEmpty(){
@@ -289,6 +288,8 @@ public class EmployeTest {
             " 0.25, 2016 , 3", // tiers temps
             " 1, 2022 , 10",
             " 1, 2019 , 8",
+            " 1, 2026 , 9",
+            " 1, 2021 , 10",
     })
     void testgetNbRttTemps(Double tempsActivite, Integer annee, Integer rttJour){
         //GIVEN
@@ -301,4 +302,6 @@ public class EmployeTest {
         //THEN
         Assertions.assertThat(nbRtt).isEqualTo(rttJour);
     }
+
 }
+
