@@ -139,6 +139,20 @@ public class EmployeTest {
         Assertions.assertThat(prime).isEqualTo(1000.0);
     }
 
+    @Test
+    void TestGetPrimeAnnuelIfPerfIsNull(){
+
+        Employe employee = new Employe("JOB","Steve","T001",
+                LocalDate.now(),1400d,null,1.0d);
+
+        //WHEN
+        Double prime = employee.getPrimeAnnuelle();
+
+        //THEN
+
+        Assertions.assertThat(prime).isEqualTo(1000.0);
+    }
+
     /* =====================================================================================================
                                         TEST AUGMENTATION SALAIRE EXERCICE 1
 
@@ -289,7 +303,7 @@ public class EmployeTest {
             " 1, 2022 , 10",
             " 1, 2019 , 8",
             " 1, 2026 , 9",
-            " 1, 2021 , 10",
+            " 1, 2021 , 10"
     })
     void testgetNbRttTemps(Double tempsActivite, Integer annee, Integer rttJour){
         //GIVEN
