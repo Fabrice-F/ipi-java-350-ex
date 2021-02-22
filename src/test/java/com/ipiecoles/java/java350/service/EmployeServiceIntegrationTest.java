@@ -28,22 +28,8 @@ public class EmployeServiceIntegrationTest {
     @Autowired
     EmployeRepository employeRepository;
 
-
-//    @Test
-//    public void testEmbaucheEmployeSalaire() throws EmployeException {
-//        //GIVEN
-//        employeService.embaucheEmploye("Geof","Phil", Poste.TECHNICIEN, NiveauEtude.LICENCE,1.0);
-//
-//        //WHEN
-//        String mat = employeRepository.findLastMatricule();
-//        Employe e = employeRepository.findByMatricule(mat);
-//        //THEN
-//
-//        Assertions.assertThat(e.getSalaire()).isEqualTo(1825.464);
-//    }
-
     @Test
-    public void testEmbauchePremierEmploye() throws EmployeException {
+    void testEmbauchePremierEmploye() throws EmployeException {
         //GIVEN
         String nom = "Doe";
         String prenom ="John";
@@ -88,7 +74,7 @@ public class EmployeServiceIntegrationTest {
      * @throws EmployeException Si le matricule ,le caTraite ou objectifCa n'as pas une valeur correcte
      */
     @Test
-    public void CalculPerformanceCommercialCAS1() throws EmployeException {
+    void CalculPerformanceCommercialCAS1() throws EmployeException {
         // GIVEN
 
              // Ajout d'un second commercial => matricule C00001 et perf 1 :
@@ -108,7 +94,7 @@ public class EmployeServiceIntegrationTest {
      * @throws EmployeException Si le matricule ,le caTraite ou objectifCa n'as pas une valeur correcte
      */
     @Test
-    public void CalculPerformanceCommercialCAS2() throws EmployeException {
+    void CalculPerformanceCommercialCAS2() throws EmployeException {
         // GIVEN
         employeService.embaucheEmploye("Joel","Bill",Poste.COMMERCIAL,NiveauEtude.LICENCE,1.0);
 
@@ -125,7 +111,7 @@ public class EmployeServiceIntegrationTest {
      * @throws EmployeException Si le matricule ,le caTraite ou objectifCa n'as pas une valeur correcte
      */
     @Test
-    public void CalculPerformanceCommercialCAS3() throws EmployeException {
+    void CalculPerformanceCommercialCAS3() throws EmployeException {
         // GIVEN
         employeService.embaucheEmploye("Joel","Bill",Poste.COMMERCIAL,NiveauEtude.LICENCE,1.0);
 
@@ -145,7 +131,7 @@ public class EmployeServiceIntegrationTest {
     // Au moment où l'on va contrôler si sa nouvelle perf (qui est de 1 + 1 dans ce cas de test car cas 3)
     // est supérieur a la moyenne de des perfs en bdd qui est de 1 .
     // alors on lui ajoute +1
-    public void CalculPerformanceCommercialCAS4() throws EmployeException {
+    void CalculPerformanceCommercialCAS4() throws EmployeException {
         // GIVEN
         employeService.embaucheEmploye("Joel","Bill",Poste.COMMERCIAL,NiveauEtude.LICENCE,1.0);
 
@@ -162,7 +148,7 @@ public class EmployeServiceIntegrationTest {
      */
     @Test
     // Infos identique au CAS4
-    public void CalculPerformanceCommercialCAS5() throws EmployeException {
+    void CalculPerformanceCommercialCAS5() throws EmployeException {
         // GIVEN
         employeService.embaucheEmploye("Joel","Bill",Poste.COMMERCIAL,NiveauEtude.LICENCE,1.0);
 
@@ -181,7 +167,7 @@ public class EmployeServiceIntegrationTest {
      */
     @Test
     // CAS SI L'EMPLOYE EST EN CAS 5 MAIS AVEC UNE PERF INFERIEUR A LA MOYENNE DE COMMERCIAUX.
-    public void CalculPerformanceCommercialCAS5WithAvgInf() throws EmployeException {
+    void CalculPerformanceCommercialCAS5WithAvgInf() throws EmployeException {
         // GIVEN
 
         employeService.embaucheEmploye("Joel","Bill",Poste.COMMERCIAL,NiveauEtude.LICENCE,1.0);
@@ -203,7 +189,7 @@ public class EmployeServiceIntegrationTest {
 
     @BeforeEach
     @AfterEach
-    public void Purgebdd(){
+    void Purgebdd(){
         employeRepository.deleteAll();
     }
 

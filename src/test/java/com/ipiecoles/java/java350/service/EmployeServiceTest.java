@@ -33,7 +33,7 @@ public class EmployeServiceTest {
     EmployeRepository employeRepository;
 
     @Test
-    public void testEmbauchePremierEmploye() throws EmployeException {
+    void testEmbauchePremierEmploye() throws EmployeException {
         //GIVEN
         String nom = "Doe";
         String prenom ="John";
@@ -73,7 +73,7 @@ public class EmployeServiceTest {
 
 
     @Test
-    public void testEmbaucheLimiteMatricule() throws EmployeException {
+    void testEmbaucheLimiteMatricule() throws EmployeException {
         //GIVEN
         String nom = "Doe";
         String prenom ="John";
@@ -98,7 +98,7 @@ public class EmployeServiceTest {
     }
 
     @Test
-    public void testEmbaucheEmpoyeExisteDeja() throws EmployeException {
+    void testEmbaucheEmpoyeExisteDeja() throws EmployeException {
         //GIVEN
         String nom = "Doe";
         String prenom ="John";
@@ -210,7 +210,7 @@ public class EmployeServiceTest {
             " 3 , 1 ",
             " 4 , 3 ", // vu que le mock retourne une moyenne de 1 et qu'on a un perf de 2 ( 4 -2 ) alors on ajoute +1 a la perf de l'employé.
     })
-    public void UnitTestCalculPerformanceCommercialDiminution(Integer perfDeBase,Integer performanceAttendu) throws EmployeException {
+    void UnitTestCalculPerformanceCommercialDiminution(Integer perfDeBase,Integer performanceAttendu) throws EmployeException {
         String matricule = "C00001";
         long objectif= 1000L;
         long chiffreAffaire = 802l;

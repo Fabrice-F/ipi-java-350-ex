@@ -34,7 +34,7 @@ class EmployeRepositoryTest {
 
 
     @Test
-    public void TestIntegrationFindLastMatriculeMatricule1Employe(){
+    void TestIntegrationFindLastMatriculeMatricule1Employe(){
         Employe e = new Employe("Depardeux","Gérard","T1234", LocalDate.now(),1400d,1,1d);
         Employe emplSave2 = employeRepository.save(e);
 
@@ -46,13 +46,13 @@ class EmployeRepositoryTest {
     }
 
     @Test
-    public void TestIntegrationFindLastMatriculeMatricule0Employe(){
+    void TestIntegrationFindLastMatriculeMatricule0Employe(){
         String lastMatricule = employeRepository.findLastMatricule();
         Assertions.assertThat(lastMatricule).isNull();
     }
 
     @Test
-    public void TestIntegrationFindLastMatriculeMatriculeIfMatriculeIsNull(){
+    void TestIntegrationFindLastMatriculeMatriculeIfMatriculeIsNull(){
         //GIVEN
         Employe e = new Employe("Depardeux","Gérard",null, LocalDate.now(),1400d,1,1d);
         Employe emplSave2 = employeRepository.save(e);
@@ -65,7 +65,7 @@ class EmployeRepositoryTest {
     }
 
     @Test
-    public void TestIntegrationLastMatriculeMatriculeIfMatriculeIsEmpty(){
+    void TestIntegrationLastMatriculeMatriculeIfMatriculeIsEmpty(){
         employeRepository.deleteAll();
         //GIVEN
         Employe e = new Employe("Depardeux","Gérard","", LocalDate.now(),1400d,1,1d);
@@ -79,7 +79,7 @@ class EmployeRepositoryTest {
     }
 
     @Test
-    public void TestIntegrationFindLastMatriculeMatriculeIsResultOk(){
+    void TestIntegrationFindLastMatriculeMatriculeIsResultOk(){
         //GIVEN
         Employe e = new Employe("Depardeux","Gérard","T1263", LocalDate.now(),1400d,1,1d);
         Employe e2 = new Employe("test","Bill","M4453", LocalDate.now(),1400d,1,1d);
@@ -98,7 +98,7 @@ class EmployeRepositoryTest {
     }
 
    /* =====================================================================================================
-                                    TEST avgPerformanceWhereMatriculeStartsWith EXERCICE 4 
+                                    TEST avgPerformanceWhereMatriculeStartsWith EXERCICE 4
 
      ===================================================================================================== */
 
@@ -144,7 +144,7 @@ class EmployeRepositoryTest {
 
     @BeforeEach
     @AfterEach
-    public void purgeBDD(){
+    void purgeBDD(){
         employeRepository.deleteAll();
     }
 

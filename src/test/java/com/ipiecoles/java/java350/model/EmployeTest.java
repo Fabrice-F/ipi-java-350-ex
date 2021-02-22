@@ -2,13 +2,11 @@ package com.ipiecoles.java.java350.model;
 
 
 import com.ipiecoles.java.java350.Employe;
-import com.ipiecoles.java.java350.Entreprise;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
-import java.time.DayOfWeek;
 import java.time.LocalDate;
 
 public class EmployeTest {
@@ -208,7 +206,7 @@ public class EmployeTest {
             "1399.99 , 33.9987 , 1875.97 ", // arrondi supérieur : 1875.96840013
             "1288.66 , 3.123, 1328.90 ",    // arrondi inférieur : 1328.9048518
     })
-    public void TestAugmentationSalaireMax2ChiffreApresVirgule(double AncienSalaire, double pourcentage ,double salaireAttendu ){
+    void TestAugmentationSalaireMax2ChiffreApresVirgule(double AncienSalaire, double pourcentage ,double salaireAttendu ){
         //GIVEN
 
         Employe employe = new Employe();
@@ -256,7 +254,7 @@ public class EmployeTest {
         employe.augmenterSalaire(10.0);
 
         //THEN
-        Assertions.assertThat(employe.getSalaire()).isEqualTo(null);
+        Assertions.assertThat(employe.getSalaire()).isNull();
     }
 
 

@@ -95,7 +95,6 @@ public class Employe {
         }
         // Calcul nombre de jour férié ne tombant pas le week end :
         int nbJourFeriesSemaine = (int) Entreprise.joursFeries(dateReference).stream().filter(localDate -> localDate.getDayOfWeek().getValue() <= DayOfWeek.FRIDAY.getValue()).count();
-//        System.out.println(nbJourFeriesSemaine);
 
         return (int) Math.ceil((nbJourAnnee - Entreprise.NB_JOURS_MAX_FORFAIT - nbSamediDimanche - Entreprise.NB_CONGES_BASE - nbJourFeriesSemaine) * tempsPartiel);
     }
